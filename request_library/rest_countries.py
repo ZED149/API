@@ -22,6 +22,7 @@ country = input("Enter country name you wanna search for: ")
 # initializng RC object
 rc = RestCountries(country=country)
 
+# performing operations according to user's choice
 if choice == 1:
     print(rc.extract_population())
 elif choice == 2:

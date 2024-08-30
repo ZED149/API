@@ -38,7 +38,7 @@ class RestCountries:
 
 
     # extract_language
-    def extract_language(self):
+    def extract_language(self) -> list | str:
         a = 1
         return self.__data[0]["languages"]
     
