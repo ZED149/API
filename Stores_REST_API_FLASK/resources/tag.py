@@ -50,7 +50,7 @@ class TagList(MethodView):
     @blp.alt_response(404, description="Tag not found.")
     @blp.alt_response(400,
                       description="Returned if tag is assigned to one or more items. In this case, the tag is not deleted.")
-    def delele(self, tag_id):
+    def delete(self, tag_id):
         tag = TagModel.query.get_or_404(tag_id)
 
         if not tag.items:

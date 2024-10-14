@@ -44,3 +44,21 @@ class TagsandItemsSchema(Schema):
     message = fields.Str()
     item = fields.Nested(ItemSchema)
     tags = fields.Nested(TagSchema)
+
+
+class UserSchema(Schema):
+    id = fields.Int(dump_only=True)
+    message = fields.Str(dump_only=True)
+    username = fields.Str(required=True)
+    password  =fields.Str(required=True, load_only=True)
+
+
+class DeleteUserSchema(Schema):
+    id = fields.Int()
+    message = fields.Str()
+    user = fields.Nested(UserSchema)
+
+
+class UserLoginSchema(Schema):
+    username = fields.Str(required=True)
+    password = fields.Str(required=True)

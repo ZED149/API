@@ -1,13 +1,13 @@
 
 
 # importing some important libraries
-from flask import Flask, request
 from flask_smorest import abort, Blueprint
 from flask.views import MethodView
 from schemas import ItemSchema, ItemUpdateSchema
 from models import ItemModel
 from db import db
 from sqlalchemy.exc import SQLAlchemyError
+from flask_jwt_extended import jwt_required
 
 
 # store blueprint
@@ -56,6 +56,7 @@ class ItemList(MethodView):
         return ItemModel.query.all()
     
     # create an item
+    @jwt_required()
     @blp.arguments(ItemSchema)
     @blp.response(201, ItemSchema)
     def post(self, data): 
